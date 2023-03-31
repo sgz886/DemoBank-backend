@@ -1,13 +1,13 @@
-package com.eazybytes;
+package com.gordon;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EazyBankBackendApplication {
+public class WorkerBankBackendApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(EazyBankBackendApplication.class, args);
+    SpringApplication.run(WorkerBankBackendApplication.class, args);
   }
 
 }

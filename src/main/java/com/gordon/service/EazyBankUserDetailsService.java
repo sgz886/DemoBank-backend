@@ -1,10 +1,9 @@
-package com.eazybytes.config;
+package com.gordon.service;
 
-import com.eazybytes.model.Customer;
-import com.eazybytes.repository.CustomerRepository;
+import com.gordon.model.Customer;
+import com.gordon.repository.CustomerRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

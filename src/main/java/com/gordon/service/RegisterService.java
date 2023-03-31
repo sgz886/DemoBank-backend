@@ -1,33 +1,30 @@
-package com.eazybytes.controller;
+package com.gordon.service;
 
-import com.eazybytes.model.Customer;
-import com.eazybytes.repository.CustomerRepository;
+import com.gordon.model.Customer;
+import com.gordon.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
-@RestController
-public class LoginController {
-
+@Service
+public class RegisterService {
   @Autowired
   CustomerRepository customerRepository;
+  @Autowired
+  private PasswordEncoder passwordEncoder;
 
-  @GetMapping("/test")
-  public String test() {
-    return "test";
-  }
-
-  @PostMapping("/register")
-  public ResponseEntity<String> register(@RequestBody Customer customer) {
+  public ResponseEntity<String> register(Customer customer) {
     ResponseEntity<String> response = null;
+    // 检查username是否已存在的逻辑省略
     try {
+      // save前先hash
+      String hashedPwd = passwordEncoder.encode(customer.getPwd());
+      customer.setPwd(hashedPwd);
       Customer savedCustomer = customerRepository.save(customer);
       if (savedCustomer.getId() > 0) {
-        ResponseEntity.status(HttpStatus.CREATED)
+        response = ResponseEntity.status(HttpStatus.CREATED)
             .body("Given user details are successfully registed");
       }
     } catch (Exception ex) {

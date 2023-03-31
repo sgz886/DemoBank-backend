@@ -17,15 +17,15 @@ public class RegisterService {
 
   public ResponseEntity<String> register(Customer customer) {
     ResponseEntity<String> response = null;
-    // 检查username是否已存在的逻辑省略
+    // omitted check if user is already registered
     try {
-      // save前先hash
+      // hash password before storing
       String hashedPwd = passwordEncoder.encode(customer.getPwd());
       customer.setPwd(hashedPwd);
       Customer savedCustomer = customerRepository.save(customer);
       if (savedCustomer.getId() > 0) {
         response = ResponseEntity.status(HttpStatus.CREATED)
-            .body("Given user details are successfully registed");
+            .body("Given user details registered successfully");
       }
     } catch (Exception ex) {
       response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)

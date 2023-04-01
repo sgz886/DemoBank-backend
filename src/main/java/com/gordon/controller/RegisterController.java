@@ -1,7 +1,7 @@
 package com.gordon.controller;
 
 import com.gordon.model.Customer;
-import com.gordon.service.RegisterService;
+import com.gordon.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RegisterController {
 
-  private final RegisterService registerService;
+  private final CustomerService customerService;
 
   @PostMapping("/register")
   public ResponseEntity<String> register(@RequestBody Customer customer) {
-    return registerService.register(customer);
+    return customerService.register(customer);
   }
 }

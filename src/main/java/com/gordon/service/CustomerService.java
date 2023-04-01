@@ -2,18 +2,21 @@ package com.gordon.service;
 
 import com.gordon.model.Customer;
 import com.gordon.repository.CustomerRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RegisterService {
-  @Autowired
-  CustomerRepository customerRepository;
-  @Autowired
-  private PasswordEncoder passwordEncoder;
+@RequiredArgsConstructor
+public class CustomerService {
+
+  private final CustomerRepository customerRepository;
+
+  private final PasswordEncoder passwordEncoder;
 
   public ResponseEntity<String> register(Customer customer) {
     ResponseEntity<String> response = null;
@@ -32,5 +35,9 @@ public class RegisterService {
           .body("An exception occured due to " + ex.getMessage());
     }
     return response;
+  }
+
+  public Customer getUserDetailAfterLogin(Authentication authentication) {
+    return customerRepository.findByEmail(authentication.getName()).orElse(null);
   }
 }

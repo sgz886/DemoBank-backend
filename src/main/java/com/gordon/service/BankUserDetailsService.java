@@ -11,6 +11,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+/**
+ * this is customized implementation of UserDetailsService
+ * implement customized logic for login
+ */
 @Service
 @RequiredArgsConstructor
 public class BankUserDetailsService implements UserDetailsService {

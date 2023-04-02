@@ -11,6 +11,7 @@ phases:
     commands:
       - git log | head -100
       - git status
+      - mvn clean install
   post_build:
     commands:
       - echo "Success"

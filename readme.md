@@ -1,15 +1,25 @@
-## login的实现已经被Spring Security做了
-我啥都不用写
-## ch4, 用BCryptPasswordEncoder
-完成
-### 完成register
-register跟授权无关, 需要自己弄
+# micro bank backend
 
-Service
+## Getting Started
 
-    passwordEncoder
-    repository
+### Introduction
+This is a backend application. 
 
-Repository
+1. Restful API by Spring Boot Framework
+2. MySQL and Hibernate for data persistence and manipulate
+3. Spring Security for Authentication & Authorization
 
-### Provider用默认的就行
+* configure CORS, CSRF
+* implement JWT
+* Securing endpoint URLs using MVC & Regex Matchers
+* Custom Filters
+* implement JWT
+
+### Prerequisites
+
+```
+JDK 17
+```
+```
+Maven
+```
